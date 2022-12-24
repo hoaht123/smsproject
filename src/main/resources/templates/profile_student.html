@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center flex-column align-items-center">
+            <div class="image-main">
+                <form th:action="${'/changeAvatar'}" method="post" enctype="multipart/form-data">
+                    <input type="hidden" th:value="${account.id}" name="id">
+                    <img th:src="${account.avatarURL}" alt="" id="imageProfile" width="200" height="200"
+                         style="border-radius: 50%;display: block;margin: auto;border: solid">
+                    <input type="file" hidden id="fileAvatar" name="fileAvatar" onchange="previewImage()">
+                    <span class="material-symbols-outlined icon-camera" onclick="selectFile()" style="cursor:pointer;">
+                        add_a_photo
+                    </span>
+                    <input type="submit" class="btn btn-primary" value="Change Avatar" onclick="return confirm('Are you sure change avatar')">
+                </form>
+            </div>
+            <div>
+                <h5 class="text-center" th:text="${account.fullname}"></h5>
+                <h5 class="text-center" th:text="${account.phone}"></h5>
+                <h5 class="text-center" th:text="${account.email}"></h5>
+            </div>
+        </div>
+    </div>
+</div>
+<script
+        src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
+        integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo="
+        crossorigin="anonymous"></script>
+<script>
+    const imageProfile = document.getElementById('imageProfile')
+    function selectFile(){
+        // alert("click")
+        $('#fileAvatar').trigger('click');
+    }
+    function previewImage(){
+        imageProfile.src=URL.createObjectURL(event.target.files[0]);
+    }
+</script>
+</body>
+</html>

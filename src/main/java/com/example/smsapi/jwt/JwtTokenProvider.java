@@ -13,7 +13,7 @@ import java.util.Date;
 public class JwtTokenProvider {
     @Value("{spring.jwt.key}")
     private String JWT_KEY;
-    private final Long JWT_EXPIRATION =604800000L;
+    private final Long JWT_EXPIRATION = 300000L;
 
 
     public String generateTokenFromAccount(Account account){

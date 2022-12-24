@@ -59,9 +59,9 @@ public class AccountRestController {
             String jwtToken = jwtTokenProvider.generateTokenFromAccount(account);
             return ResponseEntity.status(HttpStatus.OK).body(new LoginResponse(account, jwtToken, "success"));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new LoginResponse(null, null, "failed"));
+            System.out.println(e.getMessage());
         }
-
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new LoginResponse(null, null, "failed"));
     }
 
     @PutMapping("/changePassword/{id}")

@@ -1,9 +1,19 @@
 package com.example.smsapi.model;
 
-public class LoginResponse {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.io.Serializable;
+
+public class LoginResponse implements Serializable {
+    @JsonProperty("account")
     private Account account;
+    @JsonProperty("token")
     private String token;
+    @JsonProperty("message")
     private String message;
+
+    public LoginResponse() {
+    }
 
     public LoginResponse(Account account, String token, String message) {
         this.account = account;

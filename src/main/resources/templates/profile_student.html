@@ -27,6 +27,10 @@
                     <input type="submit" class="btn btn-primary" value="Change Avatar" onclick="return confirm('Are you sure change avatar')">
                 </form>
             </div>
+            <div><a th:href="${'/changePassword/'+account.id}" class="btn btn-success">Change Password</a></div>
+            <div><form th:action="${'/logoutAccount'}" method="post">
+                <input type="submit" class="btn btn-info" value="Logout">
+            </form></div>
             <div>
                 <h5 class="text-center" th:text="${account.fullname}"></h5>
                 <h5 class="text-center" th:text="${account.phone}"></h5>
